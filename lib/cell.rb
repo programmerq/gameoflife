@@ -3,6 +3,9 @@ class Cell
     @alive=alive
     @board=board
   end
+  def alive=(alive)
+    @alive=alive
+  end
   def alive?
     return @alive
   end

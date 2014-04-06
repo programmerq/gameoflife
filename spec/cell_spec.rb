@@ -15,13 +15,20 @@ describe Cell do
       [Cell.new(myboard, alive: true), Cell.new(myboard, alive: true), Cell.new(myboard, alive: true), Cell.new(myboard, alive: true), Cell.new(myboard, alive: true), Cell.new(myboard, alive: true), Cell.new(myboard, alive: true), Cell.new(myboard, alive: true)],
   ] }
 
+  let (:cell3) { Cell.new(myboard, alive: false) }
+  it '.alive=' do
+    expect(cell3.alive?).to be_false
+    cell3.alive=true
+    expect(cell3.alive?).to be_true
+  end
+
   it '.alive?' do
-    expect(cell1.alive?).to eq(true)
-    expect(cell2.alive?).to eq(false)
+    expect(cell1.alive?).to be_true
+    expect(cell2.alive?).to be_false
     #cell2.alive = true
     #expect(cell2.alive?).to eq(true)
   end
-  
+
   it 'finds its neighbors' do
     expect(myboard).to receive('neighbors').with(cell1)
     cell1.get_neighbors

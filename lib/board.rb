@@ -1,5 +1,5 @@
 class Board
-  def initialize (size, edge=:toroidal)
+  def initialize (size, edge=:toroidal, layout=[])
     @w, @h = size
     unless @w.kind_of? Integer and @h.kind_of? Integer
       raise ArgumentError.new 'size must be given in a [width, height] format, where width and heigh are both positive integers above 1'
@@ -8,7 +8,10 @@ class Board
     unless [:dead, :toroidal].include? @edge
       raise ArgumentError.new 'edge must be one of :dead or :toroidal'
     end
-    @rows = Array.new(@h) { |_| Array.new(@w) { |_| Cell.new(self) } }
+    @rows = Array.new(@h) { |_| Array.new(@w) { |_| Cell.new(self, alive: false) } }
+    layout.each do |x, y|
+      self[x.to_i][y.to_i].alive=true
+    end
   end
   def [](key)
     @rows[key]
