@@ -16,7 +16,7 @@ describe Board do
     expect{ Board.new(['j', 4]) }.to raise_error(ArgumentError)
     expect{ Board.new }.to raise_error(ArgumentError)
   end
-  
+
   let(:board_default) { Board.new([2,2]) }
   let(:board_toroidal) { Board.new([2,2], :toroidal) }
   let(:board_dead) { Board.new([2,2], :dead) }
@@ -26,8 +26,15 @@ describe Board do
     expect(board_dead.edge).to eq :dead
     expect{ Board.new([2,2], :bogus) }.to raise_error(ArgumentError)
   end
-  
+
+  xit 'does not allow the edge type to change after the first turn'
+
   it 'is compromised of cells' do
     expect(my_board_small[2][2]).to be_instance_of Cell
   end
+
+  xit 'takes a starting layout'
+
+  xit 'throws an error if a starting layout is bigger than the size of the board'
+
 end
