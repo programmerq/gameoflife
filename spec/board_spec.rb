@@ -40,6 +40,10 @@ describe Board do
     expect(board_layout[2][3].alive?).to be_true
   end
 
-  xit 'throws an error if a starting layout is bigger than the size of the board'
+  it 'throws an error if a starting layout is bigger than the size of the board' do
+    expect { Board.new([2,2], :toroidal, [9,9])}.to raise_error(ArgumentError)
+    expect { Board.new([2,20], :toroidal, [3,2])}.to raise_error(ArgumentError)
+    expect { Board.new([2,20], :toroidal, [1,25])}.to raise_error(ArgumentError)
+  end
 
 end

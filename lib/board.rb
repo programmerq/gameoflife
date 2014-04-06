@@ -10,6 +10,9 @@ class Board
     end
     @rows = Array.new(@h) { |_| Array.new(@w) { |_| Cell.new(self, alive: false) } }
     layout.each do |x, y|
+      if x.to_i > @w-1 or x.to_i > @h-1
+        raise ArgumentError.new "starting cell position #{x}, #{y} is outside bounds. Board size: #{@w}, #{@h}"
+      end
       self[x.to_i][y.to_i].alive=true
     end
   end
