@@ -47,7 +47,7 @@ information for each cell to a frontend so the board can be displayed.
 The board class will take the following parameters on object creation:
 
 * board size
-* edge type (dead edges or toroidal wraparound)
+* edge type (dead edges, alive edges, or toroidal wraparound)
 * starting layout.
 
 The edge type may be changed before the first turn is executed. Similarly, the
